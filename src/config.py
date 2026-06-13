@@ -11,3 +11,12 @@ AZUL = (0, 0, 255)
 
 CAMINHO_RECORDE = "data/recorde.txt"
 CAMINHO_SPRITES = "assets/imagens/spritesheet.bmp"
+
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+MUSICA_FUNDO = os.path.join(BASE_DIR, "assets", "sons", "musica_fundo.wav")
+SOM_CRISTAL = os.path.join(BASE_DIR, "assets", "sons", "cristal.wav")
+SOM_DANO = os.path.join(BASE_DIR, "assets", "sons", "dano.wav")
+SOM_PORTAL = os.path.join(BASE_DIR, "assets", "sons", "portal.wav")

@@ -1,5 +1,7 @@
 import pygame
 
+from src.audio import Audio
+
 from src.config import (
     LARGURA_TELA,
     ALTURA_TELA,
@@ -33,6 +35,9 @@ def executar_jogo():
 
     relogio = pygame.time.Clock()
     rodando = True
+
+    audio = Audio()
+    audio.tocar_musica_fundo()    
 
     player_image = pegar_sprite(CAMINHO_SPRITES, x=110, y=120, width=190, height=190, scale=0.5)
     gem_image    = pegar_sprite(CAMINHO_SPRITES, x=900, y=690, width=200, height=200, scale=0.5)
@@ -72,8 +77,15 @@ def executar_jogo():
 
         processar_movimento(teclas, jogador, velocidade, LARGURA_TELA, ALTURA_TELA)
 
+        pontos_antes = pontos
         pontos = coletar_cristal(jogador, cristal, pontos, LARGURA_TELA, ALTURA_TELA)
+        if pontos > pontos_antes:
+            audio.tocar_cristal()
+
+        vidas_antes = vidas
         vidas = interagir_inimigo(jogador, inimigo, vidas, LARGURA_TELA, ALTURA_TELA)
+        if vidas < vidas_antes:
+            audio.tocar_dano
 
         if jogador_perdeu(vidas):
             rodando = False
