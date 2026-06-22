@@ -6,281 +6,119 @@ A proposta deve apresentar uma ideia simples, clara e viável para ser desenvolv
 
 ## 1. Nome provisório do jogo
 
-Escreva aqui o nome provisório do jogo.
-
-Exemplo:
-
-> Corrida dos Obstáculos
+> Labirinto do Tempo
 
 ## 2. Integrantes do grupo
 
 Liste os integrantes do grupo.
 
-- Nome 1:
-- Nome 2:
-- Nome 3:
-- Nome 4:
+- Daniel Carneiro (Interface e Integração)
+- Andre Luiz Pinheiro (Design de Fases e Colisão)
+- Gabriel Pandino (Áudio e Estruturas)
+- Enzo Carneiro (Testes e Documentação)
 
 ## 3. Tipo de jogo
 
 Indique o tipo de jogo que será desenvolvido.
 
-Exemplos:
-
-- jogo de desviar de obstáculos;
-- jogo de coleta de itens;
-- labirinto simples;
-- jogo de perguntas e respostas;
-- jogo de memória;
-- Pong;
-- Snake;
-- Breakout;
-- nave desviando de meteoros;
-- corrida simples com obstáculos;
-- jogo de clique rápido;
-- jogo de sobrevivência simples.
-
-Tipo escolhido pelo grupo:
-
-> Escreva aqui.
+> Labirinto com coleta de itens, sistema de pontuação e fuga de inimigos.
 
 ## 4. Descrição geral do jogo
 
 Explique, em poucas linhas, como o jogo funcionará.
 
-Procure responder:
-
-- O que aparece na tela?
-- O que o jogador controla?
-- O que o jogador precisa fazer?
-- Quais desafios aparecem durante a partida?
-
-Descrição:
-
-> Escreva aqui.
+> O jogo apresenta um mapa de labirinto em 2D visto de cima. O jogador controla um guerreiro e precisa explorar o mapa para encontrar e coletar os "Cristais do Tempo". Durante a exploração, inimigos (morcegos) patrulham os corredores e devem ser evitados. Ao coletar o cristal, um portal mágico é ativado, permitindo que o jogador avance para a próxima fase.
 
 ## 5. Objetivo do jogador
 
 Explique qual é o objetivo principal do jogador.
 
-Exemplos:
-
-- coletar o maior número possível de itens;
-- sobreviver pelo maior tempo possível;
-- chegar até o final do labirinto;
-- acertar alvos;
-- responder perguntas corretamente;
-- evitar obstáculos;
-- quebrar todos os blocos.
-
-Objetivo:
-
-> Escreva aqui.
+> Coletar os cristais para acumular pontos e alcançar o portal de saída para escapar das 3 fases do labirinto com vida.
 
 ## 6. Regras principais
 
 Liste as principais regras do jogo.
 
-Exemplo:
-
-- O jogador começa com 3 vidas.
-- Cada moeda coletada vale 10 pontos.
-- Cada colisão com obstáculo remove 1 vida.
-- A partida termina quando as vidas chegam a zero.
-- O jogador vence se alcançar 100 pontos.
-
-Regras do grupo:
-
-- Regra 1:
-- Regra 2:
-- Regra 3:
-- Regra 4:
-- Regra 5:
+- **Regra 1:** O jogador começa a partida com 3 vidas.
+- **Regra 2:** Cada cristal coletado vale 10 pontos e muda de lugar no mapa de forma acessível.
+- **Regra 3:** Tocar em um inimigo desconta 1 vida e concede uma breve janela de invencibilidade.
+- **Regra 4:** O portal de avanço de fase só é ativado após uma coleta bem-sucedida.
+- **Regra 5:** O recorde de pontuação máxima (High Score) é salvo automaticamente no computador.
 
 ## 7. Condição de vitória
 
 Explique como o jogador vence ou conclui o jogo.
 
-Exemplos:
-
-- atingir determinada pontuação;
-- chegar ao final da fase;
-- sobreviver até o tempo acabar;
-- responder uma quantidade mínima de perguntas;
-- quebrar todos os blocos.
-
-Condição de vitória:
-
-> Escreva aqui.
+> O jogador vence ao sobreviver e atravessar o portal de saída na terceira e última fase do labirinto, acionando a tela de "VOCÊ ESCAPOU!".
 
 ## 8. Condição de derrota ou encerramento
 
 Explique como o jogador perde ou quando a partida termina.
 
-Exemplos:
-
-- perder todas as vidas;
-- acabar o tempo;
-- colidir com determinado obstáculo;
-- errar muitas perguntas;
-- deixar a bola cair, no caso de Breakout ou Pong.
-
-Condição de derrota ou encerramento:
-
-> Escreva aqui.
+> O jogador perde e a partida é encerrada (Game Over) se o seu número de vidas chegar a zero por conta de colisões sucessivas com os inimigos.
 
 ## 9. Elementos previstos no jogo
 
 Descreva os principais elementos que farão parte do jogo.
 
-## Jogador ou elemento principal
+**Jogador ou elemento principal**
+> Um personagem (guerreiro/aventureiro) renderizado a partir de uma spritesheet, controlado pelas setas direcionais do teclado.
 
-Exemplo:
+**Obstáculos, inimigos ou desafios**
+> Paredes de pedra que bloqueiam a passagem (física de grade) e morcegos inimigos que causam dano ao toque e perseguem o jogador pelo labirinto.
 
-> Um personagem controlado pelas setas do teclado.
+**Itens, alvos ou objetos de interação**
+> Cristais brilhantes (gemas) que aumentam a pontuação e um portal roxo que transporta o jogador entre os níveis.
 
-Descrição:
-
-> Escreva aqui.
-
-## Obstáculos, inimigos ou desafios
-
-Exemplo:
-
-> Obstáculos aparecem em posições aleatórias e devem ser evitados.
-
-Descrição:
-
-> Escreva aqui.
-
-## Itens, alvos ou objetos de interação
-
-Exemplo:
-
-> Moedas aparecem na tela e aumentam a pontuação quando coletadas.
-
-Descrição:
-
-> Escreva aqui.
-
-## Pontuação, vidas, tempo ou progresso
-
-Exemplo:
-
-> O jogador começa com 3 vidas e ganha 10 pontos por item coletado.
-
-Descrição:
-
-> Escreva aqui.
+**Pontuação, vidas, tempo ou progresso**
+> Sistema de pontuação contínua (+10 por cristal), sistema de persistência (lê e grava o recorde em um arquivo `.txt`), e HUD na tela exibindo os Pontos, Recorde e as 3 Vidas restantes.
 
 ## 10. Controles previstos
 
 Informe os comandos que serão utilizados pelo jogador.
 
-Exemplo:
-
-- Seta para cima: mover para cima
-- Seta para baixo: mover para baixo
-- Seta para esquerda: mover para esquerda
-- Seta para direita: mover para direita
-- Espaço: realizar ação
-- ESC: sair do jogo
-
-Controles do grupo:
-
-- Tecla/comando:
-- Tecla/comando:
-- Tecla/comando:
+- **Setas direcionais (Cima/Baixo/Esquerda/Direita):** Movimentar o jogador pelo mapa.
+- **ESPAÇO:** Iniciar o jogo a partir da tela de Menu.
+- **R:** Reiniciar a partida nas telas de Game Over ou Vitória.
+- **ESC:** Sair e fechar o jogo a qualquer momento.
 
 ## 11. Organização inicial do código
 
 Explique como o grupo pretende organizar o código.
 
-Exemplo:
-
-- `main.py`: inicia o jogo;
-- `src/jogo.py`: contém o loop principal;
-- `src/config.py`: guarda configurações como tamanho da tela e cores;
-- `src/funcoes.py`: contém funções auxiliares;
-- `src/dados.py`: contém funções de leitura e escrita de arquivos.
-
-Organização planejada:
-
-> Escreva aqui.
-
+- `main.py`: inicia a aplicação e chama o módulo do jogo.
+- `src/jogo.py`: contém o loop principal, a renderização e a máquina de estados (telas).
+- `src/config.py`: guarda configurações globais, dimensões da tela, cores e caminhos de arquivos.
+- `src/funcoes.py`: contém funções puras para lógica matemática, física e colisões.
+- `src/sprites.py`: gerencia o recorte das imagens (spritesheet) e as matrizes das 3 fases.
+- `src/dados.py`: funções para gravação e leitura do arquivo de recorde (`recorde.txt`).
+- `src/audio.py`: classe para gerenciamento de músicas e efeitos sonoros.
+- `tests/test_funcoes.py`: scripts de testes automatizados usando `pytest`.
 
 ## 12. Recursos externos previstos
 
 Informe se o grupo pretende utilizar imagens, sons, fontes, tutoriais ou códigos externos.
 
-Exemplo:
-
-- imagens obtidas de banco gratuito;
-- sons gratuitos;
-- tutorial usado apenas como referência;
-- fonte personalizada.
-
-Recursos previstos:
-
-> Escreva aqui.
-
-Caso não pretenda utilizar recursos externos, escreva:
-
-> Não pretendemos utilizar recursos externos.
+> Pretendemos utilizar *spritesheets* gratuitas e livres de direitos autorais para os personagens e chão, bem como arquivos de áudio `.wav` baixados de bancos gratuitos para os efeitos de coleta e dano. Utilizaremos as bibliotecas externas Pygame (motor do jogo) e Pytest (para garantia de qualidade).
 
 ## 13. Principais dificuldades esperadas
 
 Liste as dificuldades que o grupo acredita que poderá enfrentar.
 
-Exemplos:
-
-- movimentação do jogador;
-- colisão entre objetos;
-- controle de tempo;
-- criação do ranking;
-- organização do código;
-- uso do GitHub;
-- testes;
-- exibição de textos na tela.
-
-Dificuldades previstas:
-
-- Dificuldade 1:
-- Dificuldade 2:
-- Dificuldade 3:
+- **Dificuldade 1:** Implementar a matemática de colisão de forma perfeita para que o jogador não atravesse as paredes do labirinto.
+- **Dificuldade 2:** Integração limpa do código de quatro integrantes sem gerar conflitos críticos (*merge conflicts*).
+- **Dificuldade 3:** Criar uma inteligência artificial funcional de perseguição para o inimigo seguir o jogador pelo labirinto.
 
 ## 14. Escopo mínimo para a entrega final
 
 Descreva qual será a versão mínima aceitável do jogo.
 
-Esta seção é importante para evitar que o grupo escolha uma ideia grande demais.
-
-Exemplo:
-
-> A versão mínima do jogo terá um personagem controlado pelo teclado, obstáculos aparecendo na tela, sistema de vidas, sistema de pontuação e tela de fim de jogo.
-
-Escopo mínimo:
-
-> Escreva aqui.
+> A versão mínima terá um personagem capaz de andar livremente pela tela através das teclas, um item coletável que aumenta a pontuação na interface, um inimigo estático ou de movimento simples que retira vidas ao ser tocado, além das telas básicas de Menu Inicial e Fim de Jogo.
 
 ## 15. Possíveis melhorias, caso haja tempo
 
 Liste funcionalidades extras que o grupo poderá implementar se conseguir concluir o escopo mínimo.
 
-Exemplos:
-
-- tela inicial;
-- sons;
-- fases;
-- aumento de dificuldade;
-- ranking;
-- animações;
-- novos tipos de obstáculos;
-- diferentes personagens;
-- menu de pausa.
-
-Melhorias possíveis:
-
-- Melhoria 1:
-- Melhoria 2:
-- Melhoria 3:
+- **Melhoria 1:** Múltiplas fases com designs de mapas diferentes.
+- **Melhoria 2:** Inteligência artificial de perseguição (*pathfinding*) para o inimigo.
+- **Melhoria 3:** Sistema de persistência de dados (salvar o High Score localmente) e testes automatizados.
