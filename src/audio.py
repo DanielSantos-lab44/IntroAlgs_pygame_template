@@ -20,7 +20,9 @@ class Audio:
     
     def tocar_cristal(self):
         self.som_cristal.play()
+        
     def tocar_dano(self):
         self.som_dano.play()
+        
     def tocar_portal(self):
         self.som_portal.play()

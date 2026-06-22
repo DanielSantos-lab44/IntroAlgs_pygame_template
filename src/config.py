@@ -3,7 +3,7 @@ import os
 LARGURA_TELA = 800
 ALTURA_TELA = 600
 FPS = 60
-TAMANHO_BLOCO = 10
+TAMANHO_BLOCO = 14
 TITULO_JOGO = "Projeto Final - Pygame"
 
 BRANCO = (255, 255, 255)
@@ -16,9 +16,7 @@ VERMELHO = (255, 0, 0)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 CAMINHO_RECORDE = os.path.join(BASE_DIR, "data", "recorde.txt")
-
 CAMINHO_SPRITES = os.path.join(BASE_DIR, "assets", "imagens", "spritesheet.bmp")
-
 CAMINHO_CHAO = os.path.join(BASE_DIR, "assets", "imagens", "chao.png")
 
 MUSICA_FUNDO = os.path.join(BASE_DIR, "assets", "sons", "musica_fundo.wav")
