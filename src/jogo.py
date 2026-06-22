@@ -15,6 +15,8 @@ from src.config import (
     AMARELO,
     CAMINHO_RECORDE,
     CAMINHO_SPRITES,
+    CAMINHO_CHAO,
+    TAMANHO_BLOCO
 )
 
 from src.funcoes import (
@@ -28,15 +30,47 @@ from src.funcoes import (
     interagir_inimigo,
     desenhar_texto
 )
+from src.sprites import (
+    nivel_iniciante,
+    nivel_intermediario,
+    nivel_final)
+def desenhar_nivel(tela, nivel):
+
+    for linha, blocos in enumerate(nivel):
+
+        for coluna, bloco in enumerate(blocos):
+
+            x = coluna * TAMANHO_BLOCO
+            y = linha * TAMANHO_BLOCO
+
+            if bloco == 1:
+
+                pygame.draw.rect(
+                    tela,
+                    (50, 50, 50),
+                    (x, y, TAMANHO_BLOCO, TAMANHO_BLOCO)
+                )
+
+
 
 from src.sprites import pegar_sprite
-from src.dados import salvar_recorde, carregar_recorde
+from src.dados import (salvar_recorde, carregar_recorde
+)
+def desenhar_texto(tela, texto, tamanho, cor, x, y):
+    fonte = pygame.font.SysFont(None, tamanho)
+    imagem_texto = fonte.render(texto, True, cor)
+
+    retangulo = imagem_texto.get_rect()
+    retangulo.center = (x, y)
+
+    tela.blit(imagem_texto, retangulo)
+                
 
 def executar_jogo():
     pygame.init()
     
     tela = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
-    chao = pygame.image.load("assets/imagens/chao.png").convert()
+    chao = pygame.image.load(CAMINHO_CHAO).convert()
     chao = pygame.transform.scale(chao, (LARGURA_TELA, ALTURA_TELA))
 
     pygame.display.set_caption(TITULO_JOGO)
@@ -65,12 +99,16 @@ def executar_jogo():
         "imagem": bat_image,
         "rect": bat_image.get_rect(topleft=(200, 500))
     }
+    portal_ativo = {
+    "rect": pygame.Rect(700, 500, 40, 40)
+}
 
     velocidade = 5
     pontos = 0
     vidas = 3
     recorde = carregar_recorde(CAMINHO_RECORDE)
-
+    fase_atual = 1
+    portal_ativo = False
     estado = "MENU" 
 
     while rodando:
@@ -104,11 +142,14 @@ def executar_jogo():
         elif estado == "JOGANDO":
             teclas = pygame.key.get_pressed()
 
+           
             processar_movimento(teclas, jogador, velocidade, LARGURA_TELA, ALTURA_TELA)
 
+           
             pontos_antes = pontos
             pontos = coletar_cristal(jogador, cristal, pontos, LARGURA_TELA, ALTURA_TELA)
             if pontos > pontos_antes:
+                portal_ativo = True
                 audio.tocar_cristal()
 
             vidas_antes = vidas
@@ -127,11 +168,23 @@ def executar_jogo():
                 f"{TITULO_JOGO} | Pontos: {pontos} | Recorde: {recorde} | Vidas: {vidas}"
             )
 
+
+            
             tela.blit(chao, (0, 0))
+
 
             tela.blit(cristal["imagem"], cristal["rect"])
             tela.blit(inimigo["imagem"], inimigo["rect"])
             tela.blit(jogador["imagem"], jogador["rect"])
+            if fase_atual == 1:
+                    desenhar_nivel(tela, nivel_iniciante)
+
+            elif fase_atual == 2:
+                    desenhar_nivel(tela, nivel_intermediario)
+
+            elif fase_atual == 3:
+                    desenhar_nivel(tela, nivel_final)
+            
             
             desenhar_texto(tela, f"Pontos: {pontos}  |  Vidas: {vidas}", 24, PRETO, 120, 20)
 
